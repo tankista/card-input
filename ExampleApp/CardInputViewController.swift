@@ -9,7 +9,7 @@
 import UIKit
 import CardInput
 
-class RootViewController: UIViewController, UIPageViewControllerDelegate {
+class CardInputViewController: UIViewController, UIPageViewControllerDelegate {
 
     @IBOutlet weak var cardInput: CardInputView!
     
@@ -21,7 +21,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
 }
 
-extension RootViewController : CardInputViewDelegate {
+extension CardInputViewController : CardInputViewDelegate {
     
     func cardInputView(_ view: CardInputView, validateInput: String?, forEditingState state: CardInputView.EditingState) -> Bool {
         switch state {
