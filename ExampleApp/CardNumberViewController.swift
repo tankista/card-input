@@ -14,10 +14,12 @@ class CardNumberViewController: UIViewController {
     @IBOutlet weak var cardNumberView: CardNumberView!
     @IBOutlet weak var editingSwitch: UISwitch!
     @IBOutlet weak var groupPaddingStepper: UIStepper!
+    @IBOutlet weak var numberFormatSegment: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        cardNumberView.numberFormat = [4, 4, 4, 4]
         cardNumberView.text = "1234"
         
         groupPaddingStepper.value = Double(cardNumberView.groupPadding)
@@ -37,5 +39,13 @@ class CardNumberViewController: UIViewController {
     
     @IBAction func groupPaddingChanged(sender: UIStepper) {
         cardNumberView.groupPadding = CGFloat(sender.value)
+    }
+    
+    @IBAction func numberFormatChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: cardNumberView.numberFormat = [4, 4, 4, 4]
+        case 1: cardNumberView.numberFormat = [4, 4, 4, 2]
+        default: cardNumberView.numberFormat = [4, 6, 5]
+        }
     }
 }
