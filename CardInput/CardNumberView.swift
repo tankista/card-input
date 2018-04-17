@@ -88,6 +88,7 @@ public final class CardNumberView : UIView {
             contentSize = nil
             invalidateIntrinsicContentSize()
             setNeedsDisplay()
+            updateCursorPosition(toGlyphIndex: text.count, animated: false)
         }
     }
     
@@ -197,7 +198,6 @@ public final class CardNumberView : UIView {
             
             layoutManager.invalidateLayout(forCharacterRange: NSMakeRange(0, layoutManager.numberOfGlyphs), actualCharacterRange: nil)
             layoutManager.removeAllTextContainers()
-            print("numberof glyphs: \(layoutManager.numberOfGlyphs)")
         }
     }
     

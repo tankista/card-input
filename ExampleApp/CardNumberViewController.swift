@@ -14,6 +14,7 @@ class CardNumberViewController: UIViewController {
     @IBOutlet weak var cardNumberView: CardNumberView!
     @IBOutlet weak var editingSwitch: UISwitch!
     @IBOutlet weak var groupPaddingStepper: UIStepper!
+    @IBOutlet weak var maxAdvancementStepper: UIStepper!
     @IBOutlet weak var numberFormatSegment: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -26,6 +27,11 @@ class CardNumberViewController: UIViewController {
         groupPaddingStepper.stepValue = 1
         groupPaddingStepper.minimumValue = 0
         groupPaddingStepper.maximumValue = 20
+        
+        maxAdvancementStepper.value = Double(cardNumberView.maxAdvancement)
+        maxAdvancementStepper.stepValue = 1
+        maxAdvancementStepper.minimumValue = 5
+        maxAdvancementStepper.maximumValue = 15
     }
     
     @IBAction func editingChanged(sender: UISwitch) {
@@ -47,5 +53,9 @@ class CardNumberViewController: UIViewController {
         case 1: cardNumberView.numberFormat = [4, 4, 4, 2]
         default: cardNumberView.numberFormat = [4, 6, 5]
         }
+    }
+    
+    @IBAction func maxAdvancementChanged(sender: UIStepper) {
+        cardNumberView.maxAdvancement = CGFloat(sender.value)
     }
 }
