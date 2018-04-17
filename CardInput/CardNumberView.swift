@@ -40,7 +40,10 @@ public final class CardNumberView : UIView {
     
     ///Text that is shown when no text is set. Width of this text affects sizeThatFits().
     public var placeholderText: String? {
-        didSet { contentSize = nil }
+        didSet {
+            contentSize = nil
+            invalidateIntrinsicContentSize()
+        }
     }
     
     ///Placeholder character. Default character is "•". Setting this property will result in resetting current string.
@@ -58,6 +61,7 @@ public final class CardNumberView : UIView {
     public var groupPadding: CGFloat = 10 {
         didSet {
             contentSize = nil
+            invalidateIntrinsicContentSize()
             setNeedsDisplay()
         }
     }
@@ -66,6 +70,7 @@ public final class CardNumberView : UIView {
     public var numberFormat: [Int] = [4, 4, 4, 4] {
         didSet {
             contentSize = nil
+            invalidateIntrinsicContentSize()
             setNeedsDisplay()
         }
     }
@@ -79,6 +84,7 @@ public final class CardNumberView : UIView {
     public var maxAdvancement: CGFloat = 10 {  //this can be computed based on given font
         didSet {
             contentSize = nil
+            invalidateIntrinsicContentSize()
             setNeedsDisplay()
         }
     }
@@ -89,6 +95,7 @@ public final class CardNumberView : UIView {
     dynamic public var textAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.systemFont(ofSize: 17)] {
         didSet {
             contentSize = nil
+            invalidateIntrinsicContentSize()
             setText(text, needsRedraw: true, informDelegate: false)
         }
     }
@@ -97,6 +104,7 @@ public final class CardNumberView : UIView {
     dynamic public var placeholderCharacterAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.systemFont(ofSize: 17)] {
         didSet {
             contentSize = nil
+            invalidateIntrinsicContentSize()
             setText(text, needsRedraw: true, informDelegate: false)
         }
     }
@@ -108,6 +116,7 @@ public final class CardNumberView : UIView {
     var errorState = false {
         didSet {
             contentSize = nil
+            invalidateIntrinsicContentSize()
             setText(text, needsRedraw: true, informDelegate: false)
         }
     }
@@ -135,7 +144,9 @@ public final class CardNumberView : UIView {
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("xibs not supported yet")
+        super.init(coder: aDecoder)
+        setText(defaultPlaceholder(), needsRedraw: false, informDelegate: false)
+        updateCursor()
     }
     
     override public func layoutSubviews() {
@@ -143,6 +154,10 @@ public final class CardNumberView : UIView {
     }
     
     override public func sizeThatFits(_ size: CGSize) -> CGSize {
+        return calculateContentSize()
+    }
+    
+    public override var intrinsicContentSize: CGSize {
         return calculateContentSize()
     }
     
