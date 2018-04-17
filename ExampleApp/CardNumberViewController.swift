@@ -12,12 +12,22 @@ import CardInput
 class CardNumberViewController: UIViewController {
     
     @IBOutlet weak var cardNumberView: CardNumberView!
+    @IBOutlet weak var editingSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         cardNumberView.text = "1234"
         
+    }
+    
+    @IBAction func editingChanged(sender: UISwitch) {
+        if sender.isOn {
+            _ = cardNumberView.becomeFirstResponder()
+        }
+        else {
+            _ = cardNumberView.resignFirstResponder()
+        }
     }
     
 }

@@ -104,15 +104,52 @@
                                 <rect key="frame" x="16" y="142" width="343" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="gKk-4r-irW">
+                                <rect key="frame" x="16" y="219.5" width="343" height="150.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwh-pe-vLu">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="lAL-fk-W4h"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="auU-pC-bTP">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="90.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editing enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHQ-vR-3Gs">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hDl-3z-O6U">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="editingChangedWithSender:" destination="BC2-60-79c" eventType="valueChanged" id="7j6-if-ITK"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BSn-eY-teL" firstAttribute="top" secondItem="fxh-5w-1rb" secondAttribute="top" constant="20" id="PvK-uk-BHj"/>
+                            <constraint firstItem="gKk-4r-irW" firstAttribute="top" secondItem="agj-Tv-sdH" secondAttribute="bottom" constant="100" id="UH6-Oi-SKk"/>
                             <constraint firstItem="fxh-5w-1rb" firstAttribute="trailing" secondItem="agj-Tv-sdH" secondAttribute="trailing" constant="6" id="UvO-fb-aVG"/>
                             <constraint firstItem="agj-Tv-sdH" firstAttribute="top" secondItem="BSn-eY-teL" secondAttribute="bottom" constant="1.5" id="Xog-M7-Trf"/>
-                            <constraint firstItem="EE3-dv-Mxv" firstAttribute="top" secondItem="agj-Tv-sdH" secondAttribute="bottom" constant="22.5" id="caL-vZ-M45"/>
+                            <constraint firstItem="EE3-dv-Mxv" firstAttribute="top" secondItem="agj-Tv-sdH" secondAttribute="bottom" constant="15" id="caL-vZ-M45"/>
+                            <constraint firstItem="gKk-4r-irW" firstAttribute="leading" secondItem="fxh-5w-1rb" secondAttribute="leading" constant="16" id="eRY-tL-s5W"/>
+                            <constraint firstItem="fxh-5w-1rb" firstAttribute="trailing" secondItem="gKk-4r-irW" secondAttribute="trailing" constant="16" id="gKT-33-DZR"/>
                             <constraint firstItem="EE3-dv-Mxv" firstAttribute="centerX" secondItem="fxh-5w-1rb" secondAttribute="centerX" id="jWA-mV-Kjh"/>
                             <constraint firstItem="agj-Tv-sdH" firstAttribute="leading" secondItem="fxh-5w-1rb" secondAttribute="leading" constant="16" id="onz-vD-XvA"/>
+                            <constraint firstItem="fxh-5w-1rb" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gKk-4r-irW" secondAttribute="bottom" constant="35" id="w7g-W0-XzD"/>
                             <constraint firstItem="BSn-eY-teL" firstAttribute="leading" secondItem="fxh-5w-1rb" secondAttribute="leading" constant="16" id="yiE-jo-3v8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fxh-5w-1rb"/>
@@ -120,6 +157,7 @@
                     <tabBarItem key="tabBarItem" title="Number View" id="tig-d2-uw0"/>
                     <connections>
                         <outlet property="cardNumberView" destination="EE3-dv-Mxv" id="t8v-wy-Afc"/>
+                        <outlet property="editingSwitch" destination="hDl-3z-O6U" id="VIh-FA-eHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbx-BG-uyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
