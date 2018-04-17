@@ -9,7 +9,7 @@
 import UIKit
 import CardInput
 
-class CardInputViewController: UIViewController, UIPageViewControllerDelegate {
+class CardInputViewController: UIViewController {
 
     @IBOutlet weak var cardInput: CardInputView!
     

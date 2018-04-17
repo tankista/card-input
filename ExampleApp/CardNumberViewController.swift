@@ -6,4 +6,18 @@
 //  Copyright © 2018 UITouch. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CardInput
+
+class CardNumberViewController: UIViewController {
+    
+    @IBOutlet weak var cardNumberView: CardNumberView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        cardNumberView.text = "1234"
+        
+    }
+    
+}
