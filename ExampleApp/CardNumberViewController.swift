@@ -13,12 +13,17 @@ class CardNumberViewController: UIViewController {
     
     @IBOutlet weak var cardNumberView: CardNumberView!
     @IBOutlet weak var editingSwitch: UISwitch!
+    @IBOutlet weak var groupPaddingStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         cardNumberView.text = "1234"
         
+        groupPaddingStepper.value = Double(cardNumberView.groupPadding)
+        groupPaddingStepper.stepValue = 1
+        groupPaddingStepper.minimumValue = 0
+        groupPaddingStepper.maximumValue = 20
     }
     
     @IBAction func editingChanged(sender: UISwitch) {
@@ -30,4 +35,7 @@ class CardNumberViewController: UIViewController {
         }
     }
     
+    @IBAction func groupPaddingChanged(sender: UIStepper) {
+        cardNumberView.groupPadding = CGFloat(sender.value)
+    }
 }

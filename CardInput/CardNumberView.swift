@@ -53,7 +53,7 @@ public final class CardNumberView : UIView {
             setText(defaultPlaceholder(), needsRedraw: true, informDelegate: false)
             
             //update cursor
-            updateCursor()
+            resetCursor()
         }
     }
     
@@ -63,6 +63,8 @@ public final class CardNumberView : UIView {
             contentSize = nil
             invalidateIntrinsicContentSize()
             setNeedsDisplay()
+            
+            updateCursorPosition(toGlyphIndex: text.count, animated: false)
         }
     }
     
@@ -140,13 +142,13 @@ public final class CardNumberView : UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setText(defaultPlaceholder(), needsRedraw: false, informDelegate: false)
-        updateCursor()
+        resetCursor()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setText(defaultPlaceholder(), needsRedraw: false, informDelegate: false)
-        updateCursor()
+        resetCursor()
     }
     
     override public func layoutSubviews() {
@@ -246,9 +248,7 @@ public final class CardNumberView : UIView {
             setNeedsDisplay()
             
             //move cursor to new position
-            if let position = rectForTextContainerForGlyphAtIndex(newCount, allowCursor: true)?.origin {
-                cursorLayer?.setPosition(position, animated: false)
-            }
+            updateCursorPosition(toGlyphIndex: newCount, animated: false)
             
             //set cursor visible/hidden if cursor is out of bounds for last character
             if isFirstResponder {
@@ -261,7 +261,7 @@ public final class CardNumberView : UIView {
             delegate?.cardNumberView(self, didChangeText: self.text, inRange: range)
         }
     }
-
+    
     //Creates new card number string by appending or removing new char from string's end
     fileprivate func updateTextWithCharacter(_ char: String?, pushedCharacter: Bool = false, popedCharacter: Bool = false) {
         
@@ -277,17 +277,23 @@ public final class CardNumberView : UIView {
         setText(currentText, needsRedraw: true, informDelegate: true, pushedCharacter: pushedCharacter, popedCharacter: popedCharacter)
     }
     
-    fileprivate func updateCursor() {
+    fileprivate func resetCursor() {
         cursorLayer?.removeFromSuperlayer()
         cursorLayer = CursorLayer(placeholder: placeholderCharacter, size: sizeForTextContainer())
         layer.addSublayer(cursorLayer!)
     }
     
-    fileprivate func defaultPlaceholder(_ count: Int? = nil) -> String {
-        if placeholderCharacter == nil {
-            return ""
+    fileprivate func updateCursorPosition(toGlyphIndex: Int, animated: Bool) {
+        if let position = rectForTextContainerForGlyphAtIndex(toGlyphIndex, allowCursor: true)?.origin {
+            cursorLayer?.setPosition(position, animated: false)
         }
-        return String(Array(repeating: placeholderCharacter!, count: max(0, count ?? numberOfCharacters)))
+    }
+    
+    fileprivate func defaultPlaceholder(_ count: Int? = nil) -> String {
+        if let placeholderCharacter = placeholderCharacter {
+            return String(Array(repeating: placeholderCharacter, count: max(0, count ?? numberOfCharacters)))
+        }
+        return ""
     }
     
     //cache this, or optionally see font traits to find out line height

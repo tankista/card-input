@@ -105,7 +105,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="gKk-4r-irW">
-                                <rect key="frame" x="16" y="219.5" width="343" height="150.5"/>
+                                <rect key="frame" x="16" y="219.5" width="343" height="235.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwh-pe-vLu">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
@@ -134,6 +134,25 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zEJ-fb-ztU">
+                                        <rect key="frame" x="0.0" y="150.5" width="343" height="85"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Padding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMt-Ll-C9P">
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vue-ML-S5R">
+                                                <rect key="frame" x="249" y="0.0" width="94" height="29"/>
+                                                <connections>
+                                                    <action selector="groupPaddingChangedWithSender:" destination="BC2-60-79c" eventType="valueChanged" id="WBv-es-wCB"/>
+                                                </connections>
+                                            </stepper>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <viewLayoutGuide key="safeArea" id="AdB-dG-uHC"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
@@ -158,6 +177,7 @@
                     <connections>
                         <outlet property="cardNumberView" destination="EE3-dv-Mxv" id="t8v-wy-Afc"/>
                         <outlet property="editingSwitch" destination="hDl-3z-O6U" id="VIh-FA-eHE"/>
+                        <outlet property="groupPaddingStepper" destination="vue-ML-S5R" id="fUG-Ct-ia4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbx-BG-uyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
