@@ -61,6 +61,9 @@ public final class CardIconButton: UIControl {
         }
         
         let image = UIImage(named: assetKey, in: Bundle(for: CardIconButton.self), compatibleWith: nil)
+        if image == nil {
+            debugPrint("warning: missing image asset for key \(assetKey)")
+        }
         
         if currentButton == nil {
             currentButton = createButton()
