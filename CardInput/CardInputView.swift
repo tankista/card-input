@@ -467,7 +467,8 @@ extension CardInputView : CardNumberViewDelegate {
         
         //check if card number or CVC is out of bounds, if so trim to allowed text length
         if (view == cardNumberView || view == cardCVCView) && newCount > view.numberOfCharacters {
-            view.text = newText.substring(to: newText.index(newText.startIndex, offsetBy: view.numberOfCharacters))
+            //view.text = newText.substring(to: newText.index(newText.startIndex, offsetBy: view.numberOfCharacters))
+            view.text = String(newText.prefix(upTo: newText.index(newText.startIndex, offsetBy: view.numberOfCharacters)))
             return false
         }
         
@@ -481,7 +482,7 @@ extension CardInputView : CardNumberViewDelegate {
             
             //trim remaining string to exactly 5 characters (counting with "/")
             if expirationText.count > 5 {
-                expirationText = expirationText.substring(to: expirationText.index(expirationText.startIndex, offsetBy: 5))
+                expirationText = String(newText.prefix(upTo: expirationText.index(expirationText.startIndex, offsetBy: 5)))
             }
             
             view.text = expirationText
