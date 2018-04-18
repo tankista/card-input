@@ -217,7 +217,7 @@ public final class CardNumberView : UIView {
     
     // MARK: Private Methods
     
-    //Sets text as complete value, appends placeholder chars if not full lenght
+    //Sets text as complete value, appends placeholder chars if not full length
     fileprivate func setText(_ text: String, needsRedraw: Bool, informDelegate: Bool, pushedCharacter: Bool = false, popedCharacter: Bool = false) {
         
         //save previous text count
@@ -235,8 +235,13 @@ public final class CardNumberView : UIView {
         //add missing placeholder characters if needed to inserting string
         let numberOfPlaceholderCharacters = placeholderCharacter == nil ? 0 : numberOfCharacters - newCount
         let value = text + defaultPlaceholder(numberOfPlaceholderCharacters)
-        
+
+        guard value.count <= numberOfCharacters else {
+            return
+        }
+
         //create new text storage
+        textStorage = nil
         textStorage = NSTextStorage()
         textStorage!.delegate = self
         textStorage!.addLayoutManager(layoutManager)
