@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42422CF42088BAEC000FA12F /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42422CF32088BAEC000FA12F /* Icons.xcassets */; };
 		426C9BFA2085E3B900D86340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9BF92085E3B900D86340 /* AppDelegate.swift */; };
 		426C9BFC2085E3B900D86340 /* CardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9BFB2085E3B900D86340 /* CardInputViewController.swift */; };
 		426C9C032085E3B900D86340 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C9C012085E3B900D86340 /* Main.storyboard */; };
 		426C9C052085E3BE00D86340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426C9C042085E3BE00D86340 /* Assets.xcassets */; };
 		426C9C082085E3BE00D86340 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C9C062085E3BE00D86340 /* LaunchScreen.storyboard */; };
-		426C9C212085F2B700D86340 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 426C9C202085F2B700D86340 /* README.md */; };
 		426C9C2B2085F4A500D86340 /* CardInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 426C9C292085F4A500D86340 /* CardInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		426C9C2E2085F4A500D86340 /* CardInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426C9C272085F4A500D86340 /* CardInput.framework */; };
 		426C9C342085F4B200D86340 /* CardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9C0F2085E48200D86340 /* CardInputView.swift */; };
@@ -22,8 +22,8 @@
 		426C9C382085F4B200D86340 /* TextAttributes+TextComputations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9C1A2085E59B00D86340 /* TextAttributes+TextComputations.swift */; };
 		426C9C392085F4B200D86340 /* String+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9C1C2085E65600D86340 /* String+Sizes.swift */; };
 		426C9C3A2085F4B200D86340 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9C1E2085E6EA00D86340 /* Animations.swift */; };
-		426C9C3C2085F63100D86340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426C9C182085E4CB00D86340 /* Assets.xcassets */; };
 		4274A7542086073C0066128B /* CardNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4274A7532086073C0066128B /* CardNumberViewController.swift */; };
+		42CB19132088BE1E006CE33A /* CardInput.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 426C9C272085F4A500D86340 /* CardInput.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				42CB19132088BE1E006CE33A /* CardInput.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42422CF32088BAEC000FA12F /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		426C9BF62085E3B900D86340 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426C9BF92085E3B900D86340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		426C9BFB2085E3B900D86340 /* CardInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInputViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +63,6 @@
 		426C9C102085E48200D86340 /* CardIconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardIconButton.swift; sourceTree = "<group>"; };
 		426C9C112085E48200D86340 /* CardNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberView.swift; sourceTree = "<group>"; };
 		426C9C122085E48300D86340 /* PaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCard.swift; sourceTree = "<group>"; };
-		426C9C182085E4CB00D86340 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		426C9C1A2085E59B00D86340 /* TextAttributes+TextComputations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextAttributes+TextComputations.swift"; sourceTree = "<group>"; };
 		426C9C1C2085E65600D86340 /* String+Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Sizes.swift"; sourceTree = "<group>"; };
 		426C9C1E2085E6EA00D86340 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -136,7 +137,7 @@
 				426C9C1C2085E65600D86340 /* String+Sizes.swift */,
 				426C9C1E2085E6EA00D86340 /* Animations.swift */,
 				426C9C2A2085F4A500D86340 /* Info.plist */,
-				426C9C182085E4CB00D86340 /* Assets.xcassets */,
+				42422CF32088BAEC000FA12F /* Icons.xcassets */,
 			);
 			path = CardInput;
 			sourceTree = "<group>";
@@ -236,7 +237,6 @@
 			files = (
 				426C9C082085E3BE00D86340 /* LaunchScreen.storyboard in Resources */,
 				426C9C052085E3BE00D86340 /* Assets.xcassets in Resources */,
-				426C9C212085F2B700D86340 /* README.md in Resources */,
 				426C9C032085E3B900D86340 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				426C9C3C2085F63100D86340 /* Assets.xcassets in Resources */,
+				42422CF42088BAEC000FA12F /* Icons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,11 +428,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQHLE7RNUG;
 				INFOPLIST_FILE = "$(SRCROOT)/ExampleApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = name.peterstajger.CardInput;
+				PRODUCT_BUNDLE_IDENTIFIER = name.peterstajger.CardInputApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -447,11 +448,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQHLE7RNUG;
 				INFOPLIST_FILE = "$(SRCROOT)/ExampleApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = name.peterstajger.CardInput;
+				PRODUCT_BUNDLE_IDENTIFIER = name.peterstajger.CardInputApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -471,6 +473,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CardInput/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -499,6 +502,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CardInput/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

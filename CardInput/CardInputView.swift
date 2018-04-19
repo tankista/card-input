@@ -112,6 +112,12 @@ public class CardInputView : UIControl {
         
         super.init(coder: aDecoder)
         
+        let bundle = Bundle(for: type(of: self))//Bundle(for: CardNumberView.self)
+        
+        guard let image = UIImage(named: "icon_card_scan", in: bundle, compatibleWith: nil) else {
+            fatalError("could not icon_card_scan.pdf")
+        }
+        
         commonSetup()
     }
     
