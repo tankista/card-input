@@ -201,6 +201,11 @@ public final class CardNumberView : UIView {
         }
     }
     
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        cursorLayer?.tintColor = tintColor.cgColor
+    }
+    
     // MARK: Public Methods
     
     func pushNumber(_ char: String) {
@@ -285,7 +290,7 @@ public final class CardNumberView : UIView {
     
     fileprivate func resetCursor() {
         cursorLayer?.removeFromSuperlayer()
-        cursorLayer = CursorLayer(placeholder: placeholderCharacter, size: sizeForTextContainer())
+        cursorLayer = CursorLayer(placeholder: placeholderCharacter, size: sizeForTextContainer(), tintColor: tintColor.cgColor)
         layer.addSublayer(cursorLayer!)
     }
     
@@ -482,15 +487,19 @@ extension NSLayoutManager {
 class CursorLayer: CAShapeLayer {
 
     let placeholder: Character?
+    var tintColor: CGColor {
+        didSet { transaction(animated: false) { self.fillColor = self.tintColor } }
+    }
     
-    init(placeholder char: Character?, size: CGSize) {
+    init(placeholder char: Character?, size: CGSize, tintColor: CGColor) {
         placeholder = char
+        self.tintColor = tintColor
         super.init()
         
         transaction(animated: false) {
             self.isHidden = true
             self.path = self.pathForCursorType(size).cgPath
-            self.fillColor = UIColor.blue.cgColor //TODO: make this stylable 
+            self.fillColor = self.tintColor
             self.backgroundColor = UIColor.white.cgColor
         }
     }
