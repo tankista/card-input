@@ -76,9 +76,9 @@ public final class CardIconButton: UIControl {
             let options: UIViewAnimationOptions?
             
             switch (animation) {
-            case .flipLeft:     options = [UIViewAnimationOptions.transitionFlipFromLeft]
-            case .flipRight:    options = [UIViewAnimationOptions.transitionFlipFromRight]
-            case .crossFade:    options = [UIViewAnimationOptions.transitionCrossDissolve]
+            case .flipLeft:     options = [.transitionFlipFromLeft]
+            case .flipRight:    options = [.transitionFlipFromRight]
+            case .crossFade:    options = [.transitionCrossDissolve]
             default:            options = nil
             }
             

@@ -16,6 +16,7 @@ class CardInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cardInput.placeholderText = "Tap to enter card number"
         cardInput.delegate = self
     }
 

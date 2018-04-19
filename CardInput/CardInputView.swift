@@ -65,6 +65,14 @@ public class CardInputView : UIControl {
         set { setEditingState(newValue, animated: false) }
     }
     
+    ///
+    /// A text that is shown while not card information are provided.
+    ///
+    public var placeholderText: String? {
+        set { cardNumberView.placeholderText = newValue }
+        get { return cardNumberView.placeholderText }
+    }
+    
     override public var backgroundColor: UIColor? {
         didSet {
             cardIconButton.backgroundColor = backgroundColor
@@ -126,7 +134,6 @@ public class CardInputView : UIControl {
         
         clipsToBounds = true
         
-        cardNumberView.placeholderText = "Type card number" //TODO: make this as parameter
         cardNumberView.delegate = self
         
         cardIconButton.addTarget(self, action: #selector(creditCardIconTapped(_:)), for: .touchUpInside)
