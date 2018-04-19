@@ -58,7 +58,7 @@ public final class CardNumberView : UIView {
     }
     
     ///Padding between groups of digits. Default is 10.
-    public var groupPadding: CGFloat = 10 {
+    dynamic public var groupPadding: CGFloat = 10 {
         didSet {
             contentSize = nil
             invalidateIntrinsicContentSize()
@@ -82,8 +82,8 @@ public final class CardNumberView : UIView {
         return numberFormat.reduce(0, +)
     }
     
-    ///Max width of a glyph
-    public var maxAdvancement: CGFloat = 10 {  //this can be computed based on given font
+    ///Max width of a glyph. Default value is 10.
+    dynamic public var maxAdvancement: CGFloat = 10 {  //this can be computed based on given font
         didSet {
             contentSize = nil
             invalidateIntrinsicContentSize()

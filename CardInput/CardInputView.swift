@@ -112,12 +112,6 @@ public class CardInputView : UIControl {
         
         super.init(coder: aDecoder)
         
-        let bundle = Bundle(for: type(of: self))//Bundle(for: CardNumberView.self)
-        
-        guard let image = UIImage(named: "icon_card_scan", in: bundle, compatibleWith: nil) else {
-            fatalError("could not icon_card_scan.pdf")
-        }
-        
         commonSetup()
     }
     
@@ -129,6 +123,8 @@ public class CardInputView : UIControl {
         addSubview(cardIconMaskingView)
         addSubview(cardIconButton)
         cardIconMaskingView.layer.addSublayer(cardIconMaskingViewGradient)
+        
+        clipsToBounds = true
         
         cardNumberView.placeholderText = "Type card number" //TODO: make this as parameter
         cardNumberView.delegate = self

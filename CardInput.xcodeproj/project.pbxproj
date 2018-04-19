@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		42422CF42088BAEC000FA12F /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42422CF32088BAEC000FA12F /* Icons.xcassets */; };
+		425FE89C2088C323004F8DC0 /* lineto-circular-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 425FE89A2088C323004F8DC0 /* lineto-circular-book.ttf */; };
+		425FE89D2088C323004F8DC0 /* lineto-circular-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 425FE89B2088C323004F8DC0 /* lineto-circular-medium.ttf */; };
 		426C9BFA2085E3B900D86340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9BF92085E3B900D86340 /* AppDelegate.swift */; };
 		426C9BFC2085E3B900D86340 /* CardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9BFB2085E3B900D86340 /* CardInputViewController.swift */; };
 		426C9C032085E3B900D86340 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C9C012085E3B900D86340 /* Main.storyboard */; };
@@ -24,6 +26,7 @@
 		426C9C3A2085F4B200D86340 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C9C1E2085E6EA00D86340 /* Animations.swift */; };
 		4274A7542086073C0066128B /* CardNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4274A7532086073C0066128B /* CardNumberViewController.swift */; };
 		42CB19132088BE1E006CE33A /* CardInput.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 426C9C272085F4A500D86340 /* CardInput.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		42CB19152088C096006CE33A /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CB19142088C096006CE33A /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		42422CF32088BAEC000FA12F /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		425FE89A2088C323004F8DC0 /* lineto-circular-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lineto-circular-book.ttf"; sourceTree = "<group>"; };
+		425FE89B2088C323004F8DC0 /* lineto-circular-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lineto-circular-medium.ttf"; sourceTree = "<group>"; };
 		426C9BF62085E3B900D86340 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426C9BF92085E3B900D86340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		426C9BFB2085E3B900D86340 /* CardInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInputViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 		426C9C292085F4A500D86340 /* CardInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardInput.h; sourceTree = "<group>"; };
 		426C9C2A2085F4A500D86340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4274A7532086073C0066128B /* CardNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewController.swift; sourceTree = "<group>"; };
+		42CB19142088C096006CE33A /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		425FE8982088C308004F8DC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				425FE8992088C314004F8DC0 /* Fonts */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		425FE8992088C314004F8DC0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				425FE89A2088C323004F8DC0 /* lineto-circular-book.ttf */,
+				425FE89B2088C323004F8DC0 /* lineto-circular-medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		426C9BED2085E3B800D86340 = {
 			isa = PBXGroup;
 			children = (
@@ -115,9 +138,11 @@
 			isa = PBXGroup;
 			children = (
 				426C9BF92085E3B900D86340 /* AppDelegate.swift */,
+				42CB19142088C096006CE33A /* Appearance.swift */,
 				426C9BFB2085E3B900D86340 /* CardInputViewController.swift */,
 				4274A7532086073C0066128B /* CardNumberViewController.swift */,
 				426C9C012085E3B900D86340 /* Main.storyboard */,
+				425FE8982088C308004F8DC0 /* Supporting Files */,
 				426C9C042085E3BE00D86340 /* Assets.xcassets */,
 				426C9C062085E3BE00D86340 /* LaunchScreen.storyboard */,
 				426C9C092085E3BE00D86340 /* Info.plist */,
@@ -235,7 +260,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425FE89D2088C323004F8DC0 /* lineto-circular-medium.ttf in Resources */,
 				426C9C082085E3BE00D86340 /* LaunchScreen.storyboard in Resources */,
+				425FE89C2088C323004F8DC0 /* lineto-circular-book.ttf in Resources */,
 				426C9C052085E3BE00D86340 /* Assets.xcassets in Resources */,
 				426C9C032085E3B900D86340 /* Main.storyboard in Resources */,
 			);
@@ -257,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4274A7542086073C0066128B /* CardNumberViewController.swift in Sources */,
+				42CB19152088C096006CE33A /* Appearance.swift in Sources */,
 				426C9BFC2085E3B900D86340 /* CardInputViewController.swift in Sources */,
 				426C9BFA2085E3B900D86340 /* AppDelegate.swift in Sources */,
 			);

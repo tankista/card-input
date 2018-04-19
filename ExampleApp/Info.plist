@@ -43,5 +43,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>lineto-circular-book.ttf</string>
+		<string>lineto-circular-medium.ttf</string>
+	</array>
 </dict>
 </plist>
