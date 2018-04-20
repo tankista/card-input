@@ -19,10 +19,18 @@ public protocol CardIconButtonDelegate : class {
 /// a card type that user is inputting. It shows also type `scan` that can
 /// open an OCR scanner. Transition between icon types can be animated.
 ///
+@objcMembers
 public final class CardIconButton: UIControl {
     
     /// user specified icon images for each icon type
-    public var iconTypes: [IconType: UIImage]?
+    public dynamic var iconTypes: [IconType: UIImage]? {
+        didSet {
+            //whenever new icon types are set, we need to reload existing images in case it's chnaged
+            if let currentType = currentIconType, let newImage = iconTypes?[currentType] {
+                currentButton?.setBackgroundImage(newImage, for: .normal)
+            }
+        }
+    }
     
     public weak var delegate: CardIconButtonDelegate?
     

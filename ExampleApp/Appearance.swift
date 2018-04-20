@@ -11,12 +11,17 @@ import CardInput
 
 final class Appearance {
     
-    class func styleCardInputView() {
+    class func style() {
+        styleCardInputView()
+        styleCardNumberView()
+    }
+    
+    private class func styleCardInputView() {
         let appearance = CardInputView.appearance()
         appearance.backgroundColor = UIColor.white
     }
     
-    class func styleCardNumberView() {
+    private class func styleCardNumberView() {
         let appearance = CardNumberView.appearance()
         appearance.groupPadding = 10
         appearance.maxAdvancement = 10
