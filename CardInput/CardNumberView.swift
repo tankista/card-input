@@ -508,7 +508,7 @@ class CursorLayer: CAShapeLayer {
         if let _ = placeholder {
             //this is hardcoded, we need glyph
             let dotSize: CGFloat = 7
-            let center = CGPoint(x: (size.width-dotSize)/2, y: (size.height-dotSize)/2+1) //This +1 is hardcoded to match exact position, will not work for different fonts
+            let center = CGPoint(x: (size.width-dotSize)/2, y: (size.height-dotSize)/2+1.5) //This +1 is hardcoded to match exact position, will not work for different fonts
             return UIBezierPath(ovalIn: CGRect(x: center.x, y: center.y, width: dotSize, height: dotSize))
             
             //create path for character, this does not work correctly, dont know how to place glyph to proper place, perhaps it needs layout manager
