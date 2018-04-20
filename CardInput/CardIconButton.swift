@@ -21,12 +21,10 @@ public protocol CardIconButtonDelegate : class {
 ///
 public final class CardIconButton: UIControl {
     
-    fileprivate var currentButton: UIButton?
+    /// user specified icon images for each icon type
+    public var iconTypes: [IconType: UIImage]?
     
-    public var iconTypes: [IconType: String]?   //button key and image asset name
     public weak var delegate: CardIconButtonDelegate?
-    
-    fileprivate(set) var currentIconType: IconType?
     
     public enum Animation {
         case flipLeft, flipRight, crossFade
@@ -34,13 +32,38 @@ public final class CardIconButton: UIControl {
     }
     
     public enum IconType: String {
-        case Scan, Unknown, CVC, CVCAmex
-        case ApplePay, AmericanExpress, Discover, Visa, MasterCard, DinersClub, JCB
+        case scan               = "icon_card_scan"
+        case unknown            = "icon_card_default"
+        case CVC                = "icon_card_cvc"
+        case CVCAmex            = "icon_card_cvc_amex"
+        case AmericanExpress    = "icon_card_amex"
+        case Discover           = "icon_card_discover"
+        case Visa               = "icon_card_visa"
+        case MasterCard         = "icon_card_mastercard"
+        case DinersClub         = "icon_card_diners"
+        case JCB                = "icon_card_jcb"
     }
+    
+    fileprivate var currentButton: UIButton?
+    fileprivate(set) var currentIconType: IconType?
+    
+    fileprivate var currentInputView: UIView?
+    fileprivate var currentInputAccessoryView: UIView?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
     }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        currentButton?.frame = bounds
+    }
+    
+    // MARK: Public Methods
     
     public func setIconType(_ type: IconType, animation: Animation = .none) {
         
@@ -51,18 +74,15 @@ public final class CardIconButton: UIControl {
             return button
         }
         
-        guard let assetKey = iconTypes?[type] else {
-            fatalError("could not match button asset for given key (\(type.rawValue)). Please set iconTypes dictionary.")
-        }
-        
         //do nothing when trying to set existing card type
         if type == currentIconType {
             return
         }
-        let bundle = Bundle(for: CardIconButton.self)
-        let image = UIImage(named: assetKey, in: bundle, compatibleWith: nil)
+        
+        //try to load user defined icon first, if not specified use default image
+        let image = iconTypes?[type] ?? UIImage(named: type.rawValue, in: Bundle(for: CardIconButton.self), compatibleWith: nil)
         if image == nil {
-            debugPrint("warning: missing image asset for key \(assetKey)")
+            debugPrint("warning: missing image asset for key \(type.rawValue)")
         }
         
         if currentButton == nil {
@@ -94,7 +114,7 @@ public final class CardIconButton: UIControl {
                 
                 UIView.transition(from: currentButton!, to: nextButton, duration: duration, options: options, completion: completion)
             }
-            
+                
             else {
                 currentButton!.setBackgroundImage(image, for: .normal)
             }
@@ -103,22 +123,13 @@ public final class CardIconButton: UIControl {
         currentIconType = type
     }
     
+    // MARK: - Private Methods
+    
     //we support only touch up inside, if there is a need, we can properly implement all targets and actions
-    @objc func buttonTouched() {
+    @objc private func buttonTouched() {
         sendActions(for: .touchUpInside)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        currentButton?.frame = bounds
-    }
-    
-    fileprivate var currentInputView: UIView?
-    fileprivate var currentInputAccessoryView: UIView?
 }
 
 extension CardIconButton {

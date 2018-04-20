@@ -137,20 +137,20 @@ public class CardInputView : UIControl {
         cardNumberView.delegate = self
         
         cardIconButton.addTarget(self, action: #selector(creditCardIconTapped(_:)), for: .touchUpInside)
-        cardIconButton.iconTypes = [
-            .AmericanExpress: "icon_card_amex",
-            .ApplePay: "icon_card_applepay",
-            .CVC: "icon_card_cvc",
-            .CVCAmex: "icon_card_amex_cvc",
-            .Discover: "icon_card_discover",
-            .MasterCard: "icon_card_mastercard",
-            .Scan: "icon_card_scan",
-            .Visa: "icon_card_visa",
-            .Unknown: "icon_card_default",
-            .DinersClub: "icon_card_diners",
-            .JCB: "icon_card_jcb"
-        ]
-        cardIconButton.setIconType(.Scan)
+//        cardIconButton.iconTypes = [
+//            .AmericanExpress: "icon_card_amex",
+//            .ApplePay: "icon_card_applepay",
+//            .CVC: "icon_card_cvc",
+//            .CVCAmex: "icon_card_amex_cvc",
+//            .Discover: "icon_card_discover",
+//            .MasterCard: "icon_card_mastercard",
+//            .Scan: "icon_card_scan",
+//            .Visa: "icon_card_visa",
+//            .Unknown: "icon_card_default",
+//            .DinersClub: "icon_card_diners",
+//            .JCB: "icon_card_jcb"
+//        ]
+        cardIconButton.setIconType(.scan)
         cardIconButton.delegate = self
         
         cardExpirationView.placeholderText = "MM/YY"
@@ -258,7 +258,7 @@ public class CardInputView : UIControl {
         case (.none, .number):
             cardIconButton.setIconType(iconTypeForCurrentCardNumber(), animation: animated ? .crossFade : .none)
         default:
-            cardIconButton.setIconType(.Scan, animation: animated ? .crossFade : .none)
+            cardIconButton.setIconType(.scan, animation: animated ? .crossFade : .none)
         }
         
         _editingState = newState
@@ -314,7 +314,7 @@ public class CardInputView : UIControl {
     ///Returns icon type that is suitable for given card number
     fileprivate func iconTypeForCardNumber(_ number: String) -> CardIconButton.IconType {
         switch number.count {
-        case 0, 1: return .Scan //we hardcode scan icon for anything less then 2
+        case 0, 1: return .scan //we hardcode scan icon for anything less then 2
         default: return convertCardVendorToButtonIconType(cardTraitsForPartialCardNumber(number).0)
         }
     }
@@ -329,7 +329,7 @@ public class CardInputView : UIControl {
         case .JCB: return .JCB
         case .MasterCard: return .MasterCard
         case .Visa: return .Visa
-        default: return .Unknown
+        default: return .unknown
         }
     }
     
