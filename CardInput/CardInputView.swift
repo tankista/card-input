@@ -491,7 +491,7 @@ extension CardInputView : CardNumberViewDelegate {
             
             //trim remaining string to exactly 5 characters (counting with "/")
             if expirationText.count > 5 {
-                expirationText = String(newText.prefix(upTo: expirationText.index(expirationText.startIndex, offsetBy: 5)))
+                expirationText = String(expirationText.prefix(upTo: expirationText.index(expirationText.startIndex, offsetBy: 5)))
             }
             
             view.text = expirationText
