@@ -41,10 +41,10 @@ public class CardInputView : UIControl {
     ///Each card can be destribed by it's icon type, number format and cvc length
     public typealias CardData   = (String, String, String)
     
-    public let cardIconButton: CardIconButton
-    public let cardNumberView: CardNumberView
-    public let cardExpirationView: CardNumberView
-    public let cardCVCView: CardNumberView
+    public let cardIconButton = CardIconButton(frame: CGRect.zero)
+    public let cardNumberView = CardNumberView(frame: CGRect.zero)
+    public let cardExpirationView = CardNumberView(frame: CGRect.zero)
+    public let cardCVCView = CardNumberView(frame: CGRect.zero)
     
     public weak var delegate: CardInputViewDelegate!   //delegate must be set at some point
     public var contentInset: UIEdgeInsets = UIEdgeInsetsMake(12.5, 10, 12.5, 0)
@@ -93,33 +93,16 @@ public class CardInputView : UIControl {
     }
 
     fileprivate var _editingState: EditingState? //this is a backing value for editingState
-    fileprivate var cardIconMaskingView: UIView
-    fileprivate let cardIconMaskingViewGradient: CAGradientLayer
+    fileprivate var cardIconMaskingView = UIView(frame: CGRect.zero)
+    fileprivate let cardIconMaskingViewGradient = CAGradientLayer()
     
     override public init(frame: CGRect) {
-        
-        cardNumberView = CardNumberView(frame: CGRect.zero)
-        cardIconButton = CardIconButton(frame: CGRect.zero)
-        cardExpirationView = CardNumberView(frame: CGRect.zero)
-        cardCVCView = CardNumberView(frame: CGRect.zero)
-        cardIconMaskingView = UIView(frame: CGRect.zero)
-        cardIconMaskingViewGradient = CAGradientLayer()
-        
         super.init(frame: frame)
-        
         commonSetup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        cardNumberView = CardNumberView(frame: CGRect.zero)
-        cardIconButton = CardIconButton(frame: CGRect.zero)
-        cardExpirationView = CardNumberView(frame: CGRect.zero)
-        cardCVCView = CardNumberView(frame: CGRect.zero)
-        cardIconMaskingView = UIView(frame: CGRect.zero)
-        cardIconMaskingViewGradient = CAGradientLayer()
-        
         super.init(coder: aDecoder)
-        
         commonSetup()
     }
     
@@ -137,19 +120,6 @@ public class CardInputView : UIControl {
         cardNumberView.delegate = self
         
         cardIconButton.addTarget(self, action: #selector(creditCardIconTapped(_:)), for: .touchUpInside)
-//        cardIconButton.iconTypes = [
-//            .AmericanExpress: "icon_card_amex",
-//            .ApplePay: "icon_card_applepay",
-//            .CVC: "icon_card_cvc",
-//            .CVCAmex: "icon_card_amex_cvc",
-//            .Discover: "icon_card_discover",
-//            .MasterCard: "icon_card_mastercard",
-//            .Scan: "icon_card_scan",
-//            .Visa: "icon_card_visa",
-//            .Unknown: "icon_card_default",
-//            .DinersClub: "icon_card_diners",
-//            .JCB: "icon_card_jcb"
-//        ]
         cardIconButton.setIconType(.scan)
         cardIconButton.delegate = self
         
