@@ -179,6 +179,7 @@ public final class CardNumberView : UIView {
         }
         else {
             var lastRenderedGlyph: Int = 0
+            let indexOfCursor: Int? = (cursorLayer?.isHidden ?? true) ? nil : text.count
             
             while lastRenderedGlyph < layoutManager.numberOfGlyphs {
                 
@@ -191,7 +192,15 @@ public final class CardNumberView : UIView {
                 layoutManager.addTextContainer(container)
                 
                 let range = layoutManager.glyphRange(for: container)
-                layoutManager.drawGlyphs(forGlyphRange: range, at: containerRect.origin)
+                if let indexOfCursor = indexOfCursor {
+                    let shouldDrawGlyph = lastRenderedGlyph != indexOfCursor
+                    if shouldDrawGlyph {
+                        layoutManager.drawGlyphs(forGlyphRange: range, at: containerRect.origin)
+                    }
+                }
+                else {
+                    layoutManager.drawGlyphs(forGlyphRange: range, at: containerRect.origin)
+                }
                 
                 lastRenderedGlyph = NSMaxRange(range)
             }
@@ -385,13 +394,8 @@ extension CardNumberView {
         let result = super.becomeFirstResponder()
         if result == false { return result }
         
-        //need to redraw to show or hide placeholder
-        if placeholderText != nil {
-            setNeedsDisplay()
-        }
-        
-        //show cursor
         cursorLayer?.setHidden(false, animated: false)
+        setNeedsDisplay()
         
         //inform delegate
         if result == true {
@@ -406,13 +410,8 @@ extension CardNumberView {
         let result = super.resignFirstResponder()
         if result == false { return result }
         
-        //need to redraw to show or hide placeholder
-        if placeholderText != nil {
-            setNeedsDisplay()
-        }
-        
-        //hide cursor
         cursorLayer?.setHidden(true, animated: false)
+        setNeedsDisplay()
         
         return result
     }
