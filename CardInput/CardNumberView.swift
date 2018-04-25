@@ -115,8 +115,13 @@ public final class CardNumberView : UIView {
     ///Text attributes of input characters when error state is set
     dynamic public var errorTextAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: UIColor.red]
     
-    ///If true, sets errorTextAttributes otherwise normal text attributes. Animation will jiggle.
+    ///If true, sets errorTextAttributes otherwise normal text attributes. Animation will wiggle.
     var errorState = false {
+        willSet {
+            if errorState == true {
+                layer.add(Animations.wiggle(aroundPoint: center), forKey: nil)
+            }
+        }
         didSet {
             contentSize = nil
             invalidateIntrinsicContentSize()
@@ -483,6 +488,7 @@ extension NSLayoutManager {
     }
 }
 
+//TODO: add to new file
 class CursorLayer: CAShapeLayer {
 
     let placeholder: Character?
