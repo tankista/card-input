@@ -424,12 +424,12 @@ extension CardNumberView {
     
     override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         
-        if [#selector(NSObject.copy), #selector(paste(_:))].contains(action) == false {
+        if [#selector(copy(_:)), #selector(paste(_:))].contains(action) == false {
             return false
         }
         
         switch action {
-        case #selector(NSObject.copy) where text.isEmpty:
+        case #selector(copy(_:)) where text.isEmpty:
             return false
         case #selector(paste(_:)) where (UIPasteboard.general.string ?? "").isEmpty:
             return false
